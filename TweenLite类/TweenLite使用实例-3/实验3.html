@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>TweenLite</title>
+<style type="text/css"> 
+   #div1{
+   	background: #09c;
+   	color: #fff;
+   	width: 100px;
+   	position: absolute;
+   	left:0px;  /*必须得有值*/
+   	top:0px; /*必须得有值*/
+   }
+</style>
+<script type="text/javascript" src="TweenLite.js"></script>
+<script type="text/javascript"> 
+window.onload = function(){
+	var div1=document.getElementById("div1");
+	var num=1;
+	function showNumber(){
+		console.log("函数在动画执行过程中调用了:"+num+++"次了");
+	}
+	function showEnd(){
+		console.log("动画执行结束后调用了这个函数！！！");
+	}
+	//left或top值初始必须有值，否则无效果
+	//TweenLite(执行动作的对象,动画持续时间秒,动画对象)
+	//Easing动画 Bounce数衰减的反弹缓动 easeOut减速到0的缓动
+	TweenLite(div1,3,{left:100,top:100,ease:Easing.Bounce.easeOut,alpha:30,delay:2,onUpdate:showNumber,onComplete:showEnd})
+}
+</script>
+</head>
+ 
+<body>
+<div id="div1">div1	</div>
+</body>
+</html>
